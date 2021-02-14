@@ -9,7 +9,7 @@ export const transforRepoToCard = (items: any[]) => {
 
 export const getUrl = (byUser: boolean, text: string, page: number) => {
   const urlBase = 'https://api.github.com/search'
-  const perPage = 2
+  const perPage = 30
   const paginationParameters = `&per_page=${perPage}&page=${page}`
   const entitySearch = byUser
     ? `/users?q=${text}+in:login`

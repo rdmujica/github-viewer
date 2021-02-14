@@ -17,4 +17,4 @@ export AWS_SECRET_ACCESS_KEY=Y2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
 # URL AWS
-[URL in AWS](https://d2wr1tmvdqj4l5.cloudfront.net)
+[URL in AWS](https://d3s4sm8l4zbt94.cloudfront.net)
