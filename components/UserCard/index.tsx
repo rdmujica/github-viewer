@@ -18,7 +18,7 @@ export const User = ({
   name = '',
   repository = ''
 }: IUser) => (
-  <Link href={`/about?login=${name}`} passHref>
+  <Link href={`/user?login=${name}`} passHref>
     <Anchor>
       <Div>
         <Image src={cover} alt={name} />
