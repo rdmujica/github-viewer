@@ -12,7 +12,7 @@ interface IUser {
   repository?: string
 }
 
-export const User = ({
+export const UserCard = ({
   cover = DEFAULT_IMAGE,
   path = '#',
   name = '',

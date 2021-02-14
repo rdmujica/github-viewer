@@ -1,9 +1,9 @@
 import { Nav } from './styles'
 
-interface INavbar {
+interface IHeader {
   children?: React.ReactElement<any>
 }
 
-export const Navbar = ({ children }: INavbar) => {
+export const Header = ({ children }: IHeader) => {
   return <Nav>{children}</Nav>
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { User } from '@components/UserCard'
+import { UserCard } from '@components/UserCard'
 import { Loader } from '@components/Loader'
 import { List, Item, Div } from './styles'
 
@@ -17,7 +17,7 @@ export const ListOfUsers = ({
     <List>
       {itemList?.map(({ id, avatar_url, login, repository }) => (
         <Item key={id}>
-          <User name={login} cover={avatar_url} repository={repository} />
+          <UserCard name={login} cover={avatar_url} repository={repository} />
         </Item>
       ))}
     </List>

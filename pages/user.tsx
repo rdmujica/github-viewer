@@ -1,19 +1,32 @@
+import { User } from '@components/User'
 import axios from 'axios'
 
-export const getServerSideProps = async ({
-  query: { login }
-}: {
-  query: { login: string }
-}) => {
-  return { props: { login } }
+type QueryPropsT = {
+  login: string
+}
+interface IUserProps {
+  query: QueryPropsT
 }
 
-const AboutPage = ({ login }: { login: string }) => {
+export const getServerSideProps = async ({ query: { login } }: IUserProps) => {
+  const { data: repos } = await axios.get(
+    `https://api.github.com/users/${login}/repos`
+  )
+  const repositories: string[] = repos.map((repo: any) => repo.clone_url)
+  return { props: { login, repositories } }
+}
+
+interface IUserPage {
+  login: string
+  repositories: string[]
+}
+
+const UserPage = ({ login, repositories }: IUserPage) => {
   return (
     <>
-      <h1>{`${login}`}</h1>
+      <User login={login} repositories={repositories} />
     </>
   )
 }
 
-export default AboutPage
+export default UserPage
