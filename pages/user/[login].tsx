@@ -1,14 +1,9 @@
 import { User } from '@components/User'
 import axios from 'axios'
+import { GetServerSideProps } from 'next'
 
-type QueryPropsT = {
-  login: string
-}
-interface IUserProps {
-  query: QueryPropsT
-}
-
-export const getServerSideProps = async ({ query: { login } }: IUserProps) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const login = params?.login as string
   const { data: repos } = await axios.get(
     `https://api.github.com/users/${login}/repos`
   )

@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
+export const Anchor = styled.a`
+  cursor: pointer;
+  text-decoration: none;
+`
+
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;

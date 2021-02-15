@@ -1,9 +1,9 @@
 import React from 'react'
+import Link from 'next/link'
 
 import { UserCard } from '@components/UserCard'
 import { Loader } from '@components/Loader'
-import { List, Item, Div } from './styles'
-
+import { List, Item, Div, Anchor } from './styles'
 interface IListOfUsers {
   itemList?: TUser[]
   loading?: boolean
@@ -17,7 +17,15 @@ export const ListOfUsers = ({
     <List>
       {itemList?.map(({ id, avatar_url, login, repository }) => (
         <Item key={id}>
-          <UserCard name={login} cover={avatar_url} repository={repository} />
+          <Link href='/user/[login]' as={`/user/${login}`} passHref>
+            <Anchor>
+              <UserCard
+                name={login}
+                cover={avatar_url}
+                repository={repository}
+              />
+            </Anchor>
+          </Link>
         </Item>
       ))}
     </List>

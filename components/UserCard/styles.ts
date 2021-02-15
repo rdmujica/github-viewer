@@ -1,10 +1,5 @@
 import styled from 'styled-components'
 
-export const Anchor = styled.a`
-  cursor: pointer;
-  text-decoration: none;
-`
-
 export const Div = styled.div`
   display: flex;
   flex-direction: column;

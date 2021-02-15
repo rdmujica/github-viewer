@@ -1,7 +1,6 @@
 import React from 'react'
-import Link from 'next/link'
 
-import { Image, Label, Div, Anchor, LabelRepo, DivRepo } from './styles'
+import { Image, Label, Div, LabelRepo, DivRepo } from './styles'
 
 const DEFAULT_IMAGE = ''
 
@@ -18,17 +17,13 @@ export const UserCard = ({
   name = '',
   repository = ''
 }: IUser) => (
-  <Link href={`/user?login=${name}`} passHref>
-    <Anchor>
-      <Div>
-        <Image src={cover} alt={name} />
-        <Label>{`@${name}`}</Label>
-        {repository && (
-          <DivRepo>
-            <LabelRepo>{repository}</LabelRepo>
-          </DivRepo>
-        )}
-      </Div>
-    </Anchor>
-  </Link>
+  <Div>
+    <Image src={cover} alt={name} />
+    <Label>{`@${name}`}</Label>
+    {repository && (
+      <DivRepo>
+        <LabelRepo>{repository}</LabelRepo>
+      </DivRepo>
+    )}
+  </Div>
 )
