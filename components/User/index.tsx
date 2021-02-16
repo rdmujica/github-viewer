@@ -11,8 +11,8 @@ export const User = ({ login, repositories }: IUser) => {
       <Title>{login}</Title>
       <Subtitle>Repositories</Subtitle>
       <List>
-        {repositories.map((repo) => (
-          <Item>
+        {repositories.map((repo, index) => (
+          <Item key={index}>
             <a href={repo}>{repo}</a>
           </Item>
         ))}
