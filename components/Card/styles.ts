@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Div = styled.div`
+export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,7 +32,7 @@ export const Label = styled.span`
   word-wrap: break-word;
   hyphens: auto;
 `
-export const DivRepo = styled.div`
+export const RepoWrapper = styled.div`
   background-color: #8d00ff;
   border-radius: 10px;
   padding: 4px 6px;

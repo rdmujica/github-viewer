@@ -1,29 +1,27 @@
 import React from 'react'
 
-import { Image, Label, Div, LabelRepo, DivRepo } from './styles'
+import { Image, Label, CardWrapper, LabelRepo, RepoWrapper } from './styles'
 
 const DEFAULT_IMAGE = ''
 
 interface IUser {
   cover?: string
-  path?: string
   name?: string
   repository?: string
 }
 
-export const UserCard = ({
+export const Card = ({
   cover = DEFAULT_IMAGE,
-  path = '#',
   name = '',
-  repository = ''
+  repository
 }: IUser) => (
-  <Div>
+  <CardWrapper>
     <Image src={cover} alt={name} />
     <Label>{`@${name}`}</Label>
     {repository && (
-      <DivRepo>
+      <RepoWrapper>
         <LabelRepo>{repository}</LabelRepo>
-      </DivRepo>
+      </RepoWrapper>
     )}
-  </Div>
+  </CardWrapper>
 )

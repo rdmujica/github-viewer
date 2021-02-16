@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { UserCard } from '@components/UserCard'
+import { Card } from '@components/Card'
 import { Loader } from '@components/Loader'
 import { List, Item, Div, Anchor } from './styles'
 interface IListOfUsers {
@@ -19,11 +19,7 @@ export const ListOfUsers = ({
         <Item key={id}>
           <Link href='/user/[login]' as={`/user/${login}`} passHref>
             <Anchor>
-              <UserCard
-                name={login}
-                cover={avatar_url}
-                repository={repository}
-              />
+              <Card name={login} cover={avatar_url} repository={repository} />
             </Anchor>
           </Link>
         </Item>
