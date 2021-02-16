@@ -1,10 +1,11 @@
-import React, { Dispatch, SetStateAction, useState } from 'react'
+import React, { useState } from 'react'
 
 import { RadioButtonGroup } from '@components/RadioButtonGroup'
-import { Input, Button, Search, Div, DivIcon, Container } from './styles'
+import { SearchBox } from '@components/SearchBox'
+import { OptionsWrapper } from './styles'
 
 interface ISearchOptions {
-  onClick: any
+  onClick: (i: CurrentSearchT) => void
   loading?: boolean
 }
 
@@ -13,47 +14,42 @@ export const SearchOptions = ({ onClick, loading = false }: ISearchOptions) => {
   const [searchValue, setSearchValue] = useState<string>('')
   const [disabled, setDisabled] = useState<boolean>(true)
 
-  const handleOnClickSearch = async (event: any) => {
+  const handleOnClickSearch = async (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
     event.preventDefault
     onClick({ text: searchValue, findByUser: radioValue, page: 1 })
   }
 
-  const handleOnChangeSearch = (event: any) => {
+  const handleOnChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault
     const { value } = event.target
     setSearchValue(value)
     value.length > 2 ? setDisabled(false) : setDisabled(true)
   }
 
-  const handleOnKeyPress = (event: any) => {
-    if (!disabled && event.charCode === 13) {
-      handleOnClickSearch(event)
+  const handleOnKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    event.preventDefault
+    if (!disabled && event.key === 'Enter') {
+      onClick({ text: searchValue, findByUser: radioValue, page: 1 })
     }
   }
 
   return (
     <>
-      <Div>
-        <Container>
-          <Input
-            value={searchValue}
-            onChange={handleOnChangeSearch}
-            onKeyPress={handleOnKeyPress}
-          />
-          <DivIcon>
-            <Button
-              onClick={handleOnClickSearch}
-              disabled={disabled || loading}
-            >
-              <Search size='24' />
-            </Button>
-          </DivIcon>
-        </Container>
+      <OptionsWrapper>
+        <SearchBox
+          value={searchValue}
+          onClick={handleOnClickSearch}
+          onKeyPress={handleOnKeyPress}
+          onChange={handleOnChangeSearch}
+          disabled={disabled || loading}
+        />
         <RadioButtonGroup
           radioValue={radioValue}
           setRadioValue={setRadioValue}
         />
-      </Div>
+      </OptionsWrapper>
     </>
   )
 }

@@ -6,7 +6,7 @@ import { Button } from '@components/Button'
 import { Loader } from '@components/Loader'
 import { useFetchList } from '@hooks/useFetchList'
 import { Header } from '@components/Header'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
 const HomePage = () => {
   const {
