@@ -1,10 +1,5 @@
 import styled from 'styled-components'
 
-export const Anchor = styled.a`
-  cursor: pointer;
-  text-decoration: none;
-`
-
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -13,7 +8,7 @@ export const List = styled.ul`
   list-style: none;
   padding: 0;
 `
-export const Div = styled.div`
+export const WrapperList = styled.div`
   margin-top: 100px;
 `
 

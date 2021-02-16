@@ -12,6 +12,7 @@ export const CardWrapper = styled.div`
   border-radius: 20px;
   box-shadow: 0px 10px 18px rgba(0, 0, 0, 0.2);
   margin: 10px;
+  cursor: pointer;
 `
 export const Image = styled.img`
   box-shadow: 0px 10px 14px rgba(0, 0, 0, 0.2);
