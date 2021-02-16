@@ -17,12 +17,7 @@ export const ListOfUsers = ({
     <List>
       {itemList?.map(({ id, avatar_url, login, repository }) => (
         <Item key={id}>
-          <Link
-            href='/user/[login]'
-            as={`/user/${login}`}
-            passHref
-            prefetch={true}
-          >
+          <Link href='/user/[login]' as={`/user/${login}`} passHref>
             <Anchor>
               <UserCard
                 name={login}
