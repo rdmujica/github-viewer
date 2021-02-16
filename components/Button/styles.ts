@@ -1,6 +1,6 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
-export const Button = styled.button`
+export const ButtonStyle = styled.button`
   padding: 10px;
   background: #8d00ff;
   border-radius: 3px;

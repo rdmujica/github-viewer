@@ -1,15 +1,16 @@
 import React from 'react'
 
-import { Div, Button as ButttonStyle, Label } from './styles'
+import { Div, ButtonStyle, Label } from './styles'
 
 interface IButton {
   onClick?: () => void
+  children?: React.ReactNode | string
 }
 
-export const Button = ({ onClick }: IButton) => (
+export const Button = ({ onClick, children }: IButton) => (
   <Div>
-    <ButttonStyle onClick={onClick}>
-      <Label>Mas resultados</Label>
-    </ButttonStyle>
+    <ButtonStyle onClick={onClick}>
+      <Label>{children}</Label>
+    </ButtonStyle>
   </Div>
 )
