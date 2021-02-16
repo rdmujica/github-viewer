@@ -1,4 +1,4 @@
-type TUser = {
+type ItemT = {
   id: number
   login: string
   node_id: string
@@ -19,11 +19,6 @@ type TUser = {
   repository?: string
 }
 
-type TAPIUserResponse = {
-  lenght?: number
-  data: TUser[]
-  error?: string
-}
 
 type TypeActionT =
   | 'UPDATE_ITEMS'

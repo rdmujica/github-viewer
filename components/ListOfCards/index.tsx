@@ -5,7 +5,7 @@ import { Card } from '@components/Card'
 import { Loader } from '@components/Loader'
 import { List, Item, WrapperList } from './styles'
 interface IListOfCards {
-  itemList?: TUser[]
+  itemList?: ItemT[]
   loading?: boolean
 }
 
