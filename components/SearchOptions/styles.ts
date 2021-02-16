@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { Search as SearchIcon } from '@styled-icons/remix-line/Search'
 
 export const Div = styled.div`
-  margin-top: 20px;
-  font-size: 14px;
+  margin-top: 18px;
+  font-size: 16px;
 `
 export const Container = styled.div`
   display: flex;
@@ -23,9 +23,10 @@ export const Search = styled(SearchIcon)`
 `
 
 export const Input = styled.input`
+  font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  padding: 8px 4px;
+  padding: 6px 4px;
   display: block;
   width: 500px;
   &[disabled] {
