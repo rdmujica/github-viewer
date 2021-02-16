@@ -6,7 +6,6 @@ import { Button } from '@components/Button'
 import { Loader } from '@components/Loader'
 import { useFetchList } from '@hooks/useFetchList'
 import { Header } from '@components/Header'
-import styled from 'styled-components'
 
 const HomePage = () => {
   const {
@@ -31,12 +30,5 @@ const HomePage = () => {
   )
 }
 
-export const Label = styled.span`
-  font-size: 16px;
-  margin-top: 10px;
-  text-align: center;
-  font-weight: bold;
-  color: #fff;
-`
 
 export default HomePage
