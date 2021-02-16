@@ -19,7 +19,6 @@ type ItemT = {
   repository?: string
 }
 
-
 type TypeActionT =
   | 'UPDATE_ITEMS'
   | 'LOADING_ITEMS'
@@ -40,7 +39,7 @@ type CurrentSearchT = {
 }
 
 type StateT = {
-  itemList: TUser[]
+  itemList: ItemT[]
   loading: boolean
   error: string | null
   currentSearch: CurrentSearchT

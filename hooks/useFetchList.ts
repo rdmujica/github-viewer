@@ -6,7 +6,7 @@ import { useDispatchApp, useStateApp } from '@context/appContext'
 
 interface IReturnUseFetchList {
   loading: boolean
-  itemList: TUser[]
+  itemList: ItemT[]
   handleOnClickSearch: any
   loadingMore: boolean
   handleOnClickMore: any
