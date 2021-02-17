@@ -4,8 +4,9 @@ import { RadioButtonGroup } from '@components/RadioButtonGroup'
 import { SearchBox } from '@components/SearchBox'
 import { OptionsWrapper } from './styles'
 
+
 interface ISearchOptions {
-  onClick: (i: CurrentSearchT) => void
+  onClick: (o: OptionsT) => void
   loading?: boolean
 }
 
@@ -18,7 +19,7 @@ export const SearchOptions = ({ onClick, loading = false }: ISearchOptions) => {
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault
-    onClick({ text: searchValue, findByUser: radioValue, page: 1 })
+    onClick({ text: searchValue, findByUser: radioValue })
   }
 
   const handleOnChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +32,7 @@ export const SearchOptions = ({ onClick, loading = false }: ISearchOptions) => {
   const handleOnKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     event.preventDefault
     if (!disabled && event.key === 'Enter') {
-      onClick({ text: searchValue, findByUser: radioValue, page: 1 })
+      onClick({ text: searchValue, findByUser: radioValue })
     }
   }
 

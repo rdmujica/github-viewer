@@ -1,4 +1,4 @@
-const reducer = (state: StateT, action: ActionT): any => {
+const reducer = (state: StateT, action: ActionT): StateT => {
   const { params } = action
 
   switch (action.type) {
@@ -13,7 +13,8 @@ const reducer = (state: StateT, action: ActionT): any => {
       return { ...state, itemList, loading: false, error: '' }
     }
     case 'LOADING_ITEMS': {
-      return { ...state, loading: true, error: '' }
+      const { loading } = params
+      return { ...state, loading, error: '' }
     }
     case 'ERROR_ITEMS': {
       const { error } = params

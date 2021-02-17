@@ -24,7 +24,7 @@ const HomePage = () => {
       <ListOfCards itemList={itemList} loading={!loadingMore && loading} />
       {loadingMore && <Loader />}
       {!loading && !loadingMore && itemList?.length > 0 && (
-        <Button onClick={handleOnClickMore}>Ver más resultaddos</Button>
+        <Button onClick={handleOnClickMore}>Ver más resultados</Button>
       )}
     </>
   )

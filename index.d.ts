@@ -32,6 +32,12 @@ type ActionT = {
   params?: any
 }
 
+interface OptionsT {
+  text: string
+  findByUser: boolean
+}
+
+
 type CurrentSearchT = {
   text: string
   findByUser: boolean

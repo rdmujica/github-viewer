@@ -7,27 +7,27 @@ import { useDispatchApp, useStateApp } from '@context/appContext'
 interface IReturnUseFetchList {
   loading: boolean
   itemList: ItemT[]
-  handleOnClickSearch: any
+  handleOnClickSearch: (o: OptionsT) => void
   loadingMore: boolean
-  handleOnClickMore: any
+  handleOnClickMore: (e: React.MouseEvent<HTMLElement>) => void
   error: string | null
 }
 
 export const useFetchList = (): IReturnUseFetchList => {
+  const { currentSearch, loading, itemList, error } = useStateApp()
   const dispatch = useDispatchApp()
   const [loadingMore, setLoadingMore] = useState<boolean>(false)
-  const [nextPage, setNextPage] = useState(1)
-  const { currentSearch, loading, itemList, error } = useStateApp()
+  const [nextPage, setNextPage] = useState<number>(1)
 
   const loadItems = async ({ text, page, findByUser }: CurrentSearchT) => {
     try {
-      dispatch({ type: 'LOADING_ITEMS', params: {} })
+      dispatch({ type: 'LOADING_ITEMS', params: { loading: true } })
       const url = getUrl(findByUser, text, page)
       const { data } = await axios(url)
       const itemList = findByUser ? data.items : transforRepoToCard(data.items)
       const action = page === 1 ? 'UPDATE_ITEMS' : 'ADD_ITEMS'
       dispatch({ type: action, params: { itemList } })
-      setNextPage(page + 1)
+      if (data?.items?.length > 0) setNextPage(page + 1)
     } catch {
       const error = 'Ha ocurrido un error por favor intente mas tarde'
       dispatch({ type: 'ERROR_ITEMS', params: { error } })
@@ -36,13 +36,19 @@ export const useFetchList = (): IReturnUseFetchList => {
   }
 
   useEffect(() => {
-    const { text } = currentSearch
-    if (text.length > 2) {
-      loadItems(currentSearch)
+    const { page, text } = currentSearch
+    if (text.length > 2 && page <= nextPage) {
+      page === 1 && nextPage === 1 && itemList.length > 0
+        ? setNextPage(page + 1)
+        : loadItems(currentSearch)
+    }
+    if (nextPage < page) {
+      setNextPage(page + 1)
     }
   }, [currentSearch])
 
-  const handleOnClickMore = () => {
+  const handleOnClickMore = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault
     setLoadingMore(true)
     dispatch({
       type: 'ADD_PAGE_CURRENT_SEARCH',
@@ -50,10 +56,10 @@ export const useFetchList = (): IReturnUseFetchList => {
     })
   }
 
-  const handleOnClickSearch = ({ text, findByUser, page }: CurrentSearchT) => {
+  const handleOnClickSearch = ({ text, findByUser }: OptionsT) => {
     dispatch({
       type: 'UPDATE_CURRENT_SEARCH',
-      params: { currentSearch: { text, findByUser, page } }
+      params: { currentSearch: { text, findByUser, page: 1 } }
     })
   }
 

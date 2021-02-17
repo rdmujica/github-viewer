@@ -3,7 +3,7 @@ import React from 'react'
 import { Div, ButtonStyle, Label } from './styles'
 
 interface IButton {
-  onClick?: () => void
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
   children?: React.ReactNode | string
 }
 
