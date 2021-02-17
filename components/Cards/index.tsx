@@ -4,15 +4,12 @@ import { useRouter } from 'next/router'
 import { Card } from '@components/Card'
 import { Loader } from '@components/Loader'
 import { List, Item, WrapperList } from './styles'
-interface IListOfCards {
+interface ICards {
   itemList?: ItemT[]
   loading?: boolean
 }
 
-export const ListOfCards = ({
-  itemList = [],
-  loading = true
-}: IListOfCards) => {
+export const Cards = ({ itemList = [], loading = true }: ICards) => {
   const router = useRouter()
 
   const handleOnClickCard = (login: string) => (
